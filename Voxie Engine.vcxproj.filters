@@ -87,5 +87,8 @@
     <Image Include="test-tex.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+    <Image Include="test-texSpec.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>
