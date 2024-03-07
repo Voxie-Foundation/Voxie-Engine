@@ -53,18 +53,50 @@ int main()
 	// Enables the Depth Buffer
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
+	
+	//glEnable(GL_CULL_FACE); commented out for now because of weird rendering issues with the bunny model???
+	//glCullFace(GL_FRONT);
+	//glFrontFace(GL_CCW);
 
 	// Creates camera object
 	Camera camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
 
 	Model model("models/bunny/scene.gltf");
 
-	// Original code from the tutorial
-	// Model model("models/bunny/scene.gltf");
+	// Variables to create periodic event for FPS displaying
+	double prevTime = 0.0;
+	double crntTime = 0.0;
+	double timeDiff;
+	// Keeps track of the amount of frames in timeDiff
+	unsigned int counter = 0;
+
+	// Use this to disable VSync (not advised)
+	//glfwSwapInterval(0);
 
 	// Main while loop
 	while (!glfwWindowShouldClose(window))
 	{
+		// Updates counter and times
+		crntTime = glfwGetTime();
+		timeDiff = crntTime - prevTime;
+		counter++;
+
+		if (timeDiff >= 1.0 / 30.0)
+		{
+			// Creates new title
+			std::string FPS = std::to_string((1.0 / timeDiff) * counter);
+			std::string ms = std::to_string((timeDiff / counter) * 1000);
+			std::string newTitle = "Voxie Engine - " + FPS + "FPS / " + ms + "ms";
+			glfwSetWindowTitle(window, newTitle.c_str());
+
+			// Resets times and counter
+			prevTime = crntTime;
+			counter = 0;
+
+			// Use this if you have disabled VSync
+			//camera.Inputs(window);
+		}
+
 		// Specify the color of the background
 		glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
 		// Clean the back buffer and depth buffer
