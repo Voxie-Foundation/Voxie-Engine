@@ -7,8 +7,7 @@ Voxie Engine is programmed in C++ utilizing OpenGL to render graphics. It is opt
 ## FEATURES (TODO!!)
 - Voxel Rendering
 - Backface and Frustrum Culling
-- Textures
+- Triangle Strip support for voxel terrain
 - Inf world gen with 16x16x16 chunks
 - Greedy Meshing
 - Multithreading
-- Floodfill colored lights
