@@ -70,8 +70,8 @@ int main()
 	// Keeps track of the amount of frames in timeDiff
 	unsigned int counter = 0;
 
-	// Use this to disable VSync (not advised)
-	//glfwSwapInterval(0);
+	// Disable VSync, do not fucking move the camera or the  game will shit itself.
+	glfwSwapInterval(0); 
 
 	// Main while loop
 	while (!glfwWindowShouldClose(window))
